@@ -46,7 +46,7 @@ parameters:
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
-  value: .
+  value: config/s2i/fedora-generic-check-worker/
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF
