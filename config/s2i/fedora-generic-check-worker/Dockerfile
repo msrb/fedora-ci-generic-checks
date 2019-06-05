@@ -24,13 +24,9 @@ RUN dnf -y install ansible \
         file \
         findutils \
         git \
-        libguestfs-tools-c \
         libselinux-python \
         python3-dnf \
-        python3-pip \
         python3-devel \
-        qemu-img \
-        qemu-kvm \
         rpm-build \
         rsync \
         sudo \
@@ -42,12 +38,12 @@ RUN dnf -y install ansible \
 
 
 # Copy the S2I scripts to /usr/libexec/s2i since we set the label that way
-COPY ./s2i/bin/ /usr/libexec/s2i
+#COPY ./s2i/bin/ /usr/libexec/s2i
 
 # Copy the build scripts to the container
-#COPY run-rpminspect.sh /tmp/
+COPY run-rpminspect.sh /tmp/
 
 # Run the build script
 # assumes that target ENVR is available as $TARGET_ENVR
-#ENTRYPOINT ["bash", "/tmp/run-rpminspect.sh"]
-CMD ["/usr/libexec/s2i/usage"]
+ENTRYPOINT ["bash", "/tmp/run-rpminspect.sh"]
+#CMD ["/usr/libexec/s2i/usage"]
