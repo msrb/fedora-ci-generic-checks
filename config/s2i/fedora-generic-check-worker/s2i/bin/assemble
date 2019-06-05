@@ -1,0 +1,8 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 'fedora-generic-check-worker' image.
+# The 'assemble' script builds your application source ready to run.
+#
+
+echo "---> Installing application source"
+cp run-rpminspect.sh /tmp/.

@@ -1,0 +1,8 @@
+#!/bin/bash -e
+cat <<EOF
+This is the fedora:latest generic-check-worker image.
+See https://pagure.io/fedora-ci-generic-checks for more information.
+
+Sample invocation:
+s2i build test/test-app fedora-generic-check-worker fedora-generic-check-worker-app
+EOF

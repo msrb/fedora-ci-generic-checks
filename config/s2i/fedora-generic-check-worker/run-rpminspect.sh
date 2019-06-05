@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+
+CURRENTDIR=$(pwd)
+if [ ${CURRENTDIR} == "/" ] ; then
+    cd /home
+    CURRENTDIR=/home
+fi
+
+export TEST_ARTIFACTS=${CURRENTDIR}/logs
+
+# The test artifacts must be an empty directory
+rm -rf ${TEST_ARTIFACTS}
+mkdir -p ${TEST_ARTIFACTS}
+
+# output some relevant information
+INSTALLED_RPMINSPECT=`rpm -qa | egrep "^rpminspect.*"`
+echo "rpminspect version: $INSTALLED_RPMINSPECT"
+echo ""
+
+echo "running against $TARGET_ENVR"
+
+# invoke rpminspect
+
+rpminspect -o $TEST_ARTIFACTS/rpminspect.json -F json $TARGET_ENVR
+
+EXIT_CODE=`echo $?`
+
+echo "Execution complete, exit code $EXIT_CODE"
+
+exit $EXIT_CODE
