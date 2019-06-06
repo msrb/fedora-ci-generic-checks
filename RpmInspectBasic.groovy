@@ -44,7 +44,10 @@ def executeInContainer(String stageName,
         """
     }
 }
-    def podName = 'fedora-cloud-' + executionID + '-allpkgs'
+    // Execution ID for this run of the pipeline
+    def executionID = UUID.randomUUID().toString()
+    def podName = 'fedora-package-check-' + executionID
+
     podTemplate(name: podName,
                 label: podName,
                 cloud: 'openshift',
