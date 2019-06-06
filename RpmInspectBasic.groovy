@@ -69,7 +69,7 @@ def executeInContainer(String stageName,
                             resourceLimitCpu: '1',
                             resourceRequestMemory: '2Gi',
                             resourceLimitMemory: '4Gi',
-                            privileged: true,
+                            privileged: false,
                             workingDir: '/workDir')
 
             ],
