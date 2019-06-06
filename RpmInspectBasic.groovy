@@ -75,12 +75,16 @@ def executeInContainer(String stageName,
             ],
             volumes: [emptyDirVolume(memory: false, mountPath: '/sys/class/net')])
     {
-node() {
-    stage("basic information") {
+node(podName) {
+
+    currentStage = "basic information"
+    stage(currentStage) {
         print env.CI_MESSAGE
         print currentBuild.result
     }
-    stage("run rpminspect") {
+
+    currentStage = "run rpminspect"
+    stage(currentStage) {
         def json_message = readJSON text: env.CI_MESSAGE
         def TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
         executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
