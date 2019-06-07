@@ -77,13 +77,13 @@ def executeInContainer(String stageName,
     {
 node(podName) {
 
-    currentStage = "basic information"
+    currentStage = "basic-information"
     stage(currentStage) {
         print env.CI_MESSAGE
         print currentBuild.result
     }
 
-    currentStage = "run rpminspect"
+    currentStage = "run-rpminspect"
     stage(currentStage) {
         def json_message = readJSON text: env.CI_MESSAGE
         def TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
