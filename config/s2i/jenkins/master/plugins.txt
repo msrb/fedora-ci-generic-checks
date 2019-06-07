@@ -89,7 +89,6 @@ branch-api: 2.5.1
 pipeline-stage-view: 2.11
 apache-httpcomponents-client-4-api: 4.5.5-3.0
 pam-auth: 1.5.1
-lockable-resources: 2.5
 workflow-step-api: 2.19
 subversion: 2.12.1
 momentjs: 1.1.1
