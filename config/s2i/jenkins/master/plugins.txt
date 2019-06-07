@@ -18,7 +18,6 @@ lockable-resources:2.5
 
 
 # stuff from my local jenkins instance
-gradle: 1.31
 job-dsl: 1.74
 jms-messaging: 1.1.7
 matrix-auth: 2.4.2
