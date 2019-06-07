@@ -262,4 +262,11 @@ parameters:
 - description: Path within Git project to build; empty for root project directory.
   name: CONTEXT_DIR
   value: config/s2i/jenkins/master
+- description: Git source URI for Jenkins S2I
+  name: REPO_URL
+  required: true
+  value: https://pagure.io/fedora-ci-generic-checks.git
+- description: Git branch/tag reference
+  name: REPO_REF
+  value: master
 
