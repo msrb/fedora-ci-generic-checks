@@ -18,12 +18,12 @@ lockable-resources:2.5
 
 
 # stuff from my local jenkins instance
-jms-messaging: 1.1.7
-matrix-auth: 2.4.2
-workflow-basic-steps: 2.16
-workflow-job: 2.32
-jquery-detached: 1.2.1
-ssh-credentials: 1.16
-matrix-project: 1.14
-git: 3.10.0
-job-dsl: 1.74
+jms-messaging:1.1.7
+matrix-auth:2.4.2
+workflow-basic-steps:2.16
+workflow-job:2.32
+jquery-detached:1.2.1
+ssh-credentials:1.16
+matrix-project:1.14
+git:3.10.0
+job-dsl:1.74
