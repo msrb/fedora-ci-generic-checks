@@ -45,8 +45,8 @@ pipelineJob('fedora-build-check'){
 */
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
-        stringParam('DOCKER_REPO_URL', '172.30.1.1:5000', 'Docker Repo URL')
-        stringParam('OPENSHIFT_NAMESPACE', 'fedora-generic-checks', 'OpenShift Namespace')
+        stringParam('DOCKER_REPO_URL', '172.30.254.79:5000', 'Docker Repo URL')
+        stringParam('OPENSHIFT_NAMESPACE', 'fedora-package-checks', 'OpenShift Namespace')
         stringParam('OPENSHIFT_SERVICE_ACCOUNT', 'fedora-check-jenkins', 'OpenShift Service Account')
     }
 
