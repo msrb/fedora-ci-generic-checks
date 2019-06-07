@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "starting run-rpminspect.sh script"
+
 CURRENTDIR=$(pwd)
 if [ ${CURRENTDIR} == "/" ] ; then
     cd /home
