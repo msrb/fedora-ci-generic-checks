@@ -22,6 +22,7 @@ Jenkins.instance.save()
 
 global_domain = Domain.global()
 
+/* curious to see if jenkins starts up w/o all of this
 // setup OAuth against id.fp.o
 def loginRealm = new OpenIdSsoSecurityRealm("https://id.fedoraproject.org/")
 Jenkins.instance.setSecurityRealm(loginRealm)
@@ -46,4 +47,4 @@ GlobalCIConfiguration.get().addMessageProvider(fedmsgStage)
 logger.info("Setup fedora-fedmsg-devel Messaging Provider")
 FedMsgMessagingProvider fedmsgDevel = new FedMsgMessagingProvider("fedora-fedmsg-devel", "tcp://fedmsg-relay.continuous-infra.svc:4001", "tcp://fedmsg-relay.continuous-infra.svc:2003", "org.fedoraproject");
 GlobalCIConfiguration.get().addMessageProvider(fedmsgDevel)
-
+*/
