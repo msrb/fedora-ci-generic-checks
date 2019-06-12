@@ -29,6 +29,6 @@ def matrix_auth = new ProjectMatrixAuthorizationStrategy()
 matrix_auth.add(hudson.model.Hudson.READ,'anonymous')
 matrix_auth.add(hudson.model.Item.DISCOVER,'anonymous')
 matrix_auth.add(hudson.model.Item.READ,'anonymous')
-matrix_auth.add(hudson.model.Hudson.ADMINISTER, 'sysadmin-jenkins')
+matrix_auth.add(hudson.model.Hudson.ADMINISTER, 'sysadmin-qa')
 
 Jenkins.instance.setAuthorizationStrategy(matrix_auth)
