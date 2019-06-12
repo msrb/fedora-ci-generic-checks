@@ -38,7 +38,7 @@ RUN dnf -y install ansible \
 
 
 # create the workdir for jenkins
-RUN mkdir /workDir
+RUN mkdir /workDir/workspace/fedora-build-check
 RUN chmod -R 777 /workDir
 
 # Copy the S2I scripts to /usr/libexec/s2i since we set the label that way
