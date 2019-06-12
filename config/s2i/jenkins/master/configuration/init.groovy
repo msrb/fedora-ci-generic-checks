@@ -22,4 +22,13 @@ Jenkins.instance.save()
 
 global_domain = Domain.global()
 
+def loginRealm = new OpenIdSsoSecurityRealm("https://id.fedoraproject.org/")
+Jenkins.instance.setSecurityRealm(loginRealm)
 
+def matrix_auth = new ProjectMatrixAuthorizationStrategy()
+matrix_auth.add(hudson.model.Hudson.READ,'anonymous')
+matrix_auth.add(hudson.model.Item.DISCOVER,'anonymous')
+matrix_auth.add(hudson.model.Item.READ,'anonymous')
+matrix_auth.add(hudson.model.Hudson.ADMINISTER, 'sysadmin-jenkins')
+
+Jenkins.instance.setAuthorizationStrategy(matrix_auth)
