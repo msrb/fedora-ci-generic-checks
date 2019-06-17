@@ -54,7 +54,8 @@ def executeInContainer(String stageName,
                 serviceAccount: OPENSHIFT_SERVICE_ACCOUNT,
                 idleMinutes: 0,
                 namespace: OPENSHIFT_NAMESPACE,
-                podRetention: 'onFailure',
+                // this is a temporary thing while getting all of this to work
+                podRetention: always(),
 
             containers: [
                     // adds the custom container
@@ -71,7 +72,7 @@ def executeInContainer(String stageName,
                             resourceRequestMemory: '2Gi',
                             resourceLimitMemory: '4Gi',
                             privileged: false,
-                            workingDir: '/workDir')
+                            workingDir: '/home/jenkins')
 
             ],
             volumes: [emptyDirVolume(memory: false, mountPath: '/sys/class/net')])
@@ -87,7 +88,7 @@ node(podName) {
     currentStage = "run-rpminspect"
     stage(currentStage) {
         def json_message = readJSON text: env.CI_MESSAGE
-        def TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
+        env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
         executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
     }
     stage("archive output"){
