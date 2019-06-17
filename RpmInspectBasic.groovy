@@ -54,6 +54,7 @@ def executeInContainer(String stageName,
                 serviceAccount: OPENSHIFT_SERVICE_ACCOUNT,
                 idleMinutes: 0,
                 namespace: OPENSHIFT_NAMESPACE,
+                podRetention: 'onFailure',
 
             containers: [
                     // adds the custom container
