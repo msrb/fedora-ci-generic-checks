@@ -11,7 +11,6 @@ pipelineJob('fedora-build-check'){
     // by datagrepper
     fedmsgRetryCount = 120
 
-/*
     triggers{
         ciBuildTrigger{
             noSquash(true)
@@ -42,7 +41,7 @@ pipelineJob('fedora-build-check'){
             }
         }
     }
-*/
+
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
         stringParam('DOCKER_REPO_URL', '172.30.254.79:5000', 'Docker Repo URL')
