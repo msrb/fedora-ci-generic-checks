@@ -44,6 +44,9 @@ RUN mkdir -p /tmp/workspace/fedora-build-check
 # Copy the S2I scripts to /usr/libexec/s2i since we set the label that way
 #COPY ./s2i/bin/ /usr/libexec/s2i
 
+# Copy the rpminspect config until a proper data package is available
+COPY rpminspect-fedora.conf /tmp/
+
 # Copy the build scripts to the container
 COPY run-rpminspect.sh /tmp/
 
