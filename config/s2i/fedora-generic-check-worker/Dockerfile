@@ -41,11 +41,14 @@ RUN dnf -y install ansible \
 RUN mkdir -p /tmp/workspace/fedora-build-check
 #RUN chmod -R 777 /workDir
 
-# Copy the S2I scripts to /usr/libexec/s2i since we set the label that way
-#COPY ./s2i/bin/ /usr/libexec/s2i
-
 # Copy the rpminspect config until a proper data package is available
 COPY rpminspect-fedora.conf /tmp/
+
+# Copy the rpminspect data tarball
+COPY 20190618-rpminspect-redhat-data.tar.gz /tmp/
+
+# Extract the rpminspect data
+RUN tar -xzf /tmp/20190618-rpminspect-redhat-data.tar.gz -C /usr/share/rpminspect
 
 # Copy the build scripts to the container
 COPY run-rpminspect.sh /tmp/
