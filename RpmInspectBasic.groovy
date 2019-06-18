@@ -55,7 +55,7 @@ def executeInContainer(String stageName,
                 idleMinutes: 0,
                 namespace: OPENSHIFT_NAMESPACE,
                 // this is a temporary thing while getting all of this to work
-                podRetention: default(),
+                //podRetention: always(),
 
             containers: [
                     // adds the custom container
