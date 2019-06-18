@@ -55,7 +55,7 @@ def executeInContainer(String stageName,
                 idleMinutes: 0,
                 namespace: OPENSHIFT_NAMESPACE,
                 // this is a temporary thing while getting all of this to work
-                podRetention: always(),
+                podRetention: default(),
 
             containers: [
                     // adds the custom container
@@ -93,7 +93,7 @@ node(podName) {
     }
     stage("archive output"){
 
-        archiveArtifacts artifacts: 'rpminspect.json'
+        archiveArtifacts artifacts: 'run-rpminspect/logs/rpminspect.json'
 
     }
 }
