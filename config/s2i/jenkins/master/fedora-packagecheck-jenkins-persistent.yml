@@ -42,16 +42,16 @@ objects:
       app: jenkins
     name: jenkins
 
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: ${JENKINS_SERVICE_NAME}
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: ${VOLUME_CAPACITY}
+    #- apiVersion: v1
+    #  kind: PersistentVolumeClaim
+    #  metadata:
+    #    name: ${JENKINS_SERVICE_NAME}
+    #  spec:
+    #    accessModes:
+    #    - ReadWriteOnce
+    #    resources:
+    #      requests:
+    #        storage: ${VOLUME_CAPACITY}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
@@ -230,16 +230,16 @@ parameters:
     account 'admin' will be initialized with the password 'password'.
   displayName: Enable OAuth in Jenkins
   name: ENABLE_OAUTH
-  value: 'true'
+  value: 'false'
 - description: Maximum amount of memory the container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
   value: 1Gi
-- description: Volume space available for data, e.g. 512Mi, 2Gi.
-  displayName: Volume Capacity
-  name: VOLUME_CAPACITY
-  required: true
-  value: 1Gi
+  #- description: Volume space available for data, e.g. 512Mi, 2Gi.
+  #  displayName: Volume Capacity
+  #  name: VOLUME_CAPACITY
+  #  required: true
+  #  value: 1Gi
 - description: The OpenShift Namespace where the Jenkins ImageStream resides.
   displayName: Jenkins ImageStream Namespace
   name: NAMESPACE
