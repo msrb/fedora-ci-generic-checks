@@ -82,7 +82,6 @@ node(podName) {
     currentStage = "basic-information"
     stage(currentStage) {
         print env.CI_MESSAGE
-        print currentBuild.result
     }
 
     currentStage = "run-rpminspect"
