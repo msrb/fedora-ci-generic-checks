@@ -32,3 +32,16 @@ matrix_auth.add(hudson.model.Item.READ,'anonymous')
 matrix_auth.add(hudson.model.Hudson.ADMINISTER, 'sysadmin-qa')
 
 Jenkins.instance.setAuthorizationStrategy(matrix_auth)
+
+logger.info("Setup fedora-fedmsg Messaging Provider")
+FedMsgMessagingProvider fedmsg = new FedMsgMessagingProvider("fedora-fedmsg", "tcp://hub.fedoraproject.org:9940", "tcp://172.19.4.24:9941", "org.fedoraproject");
+GlobalCIConfiguration.get().addMessageProvider(fedmsg)
+
+logger.info("Setup fedora-fedmsg-stage Messaging Provider")
+FedMsgMessagingProvider fedmsgStage = new FedMsgMessagingProvider("fedora-fedmsg-stage", "tcp://stg.fedoraproject.org:9940", "tcp://172.19.4.36:9941", "org.fedoraproject");
+GlobalCIConfiguration.get().addMessageProvider(fedmsgStage)
+
+logger.info("Setup fedora-fedmsg-devel Messaging Provider")
+FedMsgMessagingProvider fedmsgDevel = new FedMsgMessagingProvider("fedora-fedmsg-devel", "tcp://fedmsg-relay.continuous-infra.svc:4001", "tcp://fedmsg-relay.continuous-infra.svc:2003", "org.fedoraproject");
+GlobalCIConfiguration.get().addMessageProvider(fedmsgDevel)
+
