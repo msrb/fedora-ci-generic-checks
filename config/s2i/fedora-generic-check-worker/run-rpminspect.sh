@@ -28,6 +28,10 @@ rpminspect -c /tmp/rpminspect-fedora.conf -o $TEST_ARTIFACTS/rpminspect.json -F 
 
 EXIT_CODE=`echo $?`
 
+
 echo "Execution complete, exit code $EXIT_CODE"
+
+echo "Converting json output into results.yaml"
+python3 /tmp/convert_result_json_yaml.py -o $TEST_ARTIFACTS/results.yaml $TEST_ARTIFACTS/rpminspect.json
 
 exit $EXIT_CODE

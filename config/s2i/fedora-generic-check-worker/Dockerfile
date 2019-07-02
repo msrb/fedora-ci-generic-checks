@@ -27,6 +27,7 @@ RUN dnf -y install ansible \
         libselinux-python \
         python3-dnf \
         python3-devel \
+        python3-pyyaml \
         rpm-build \
         rsync \
         sudo \
@@ -52,6 +53,7 @@ RUN tar -xzf /tmp/20190618-rpminspect-redhat-data.tar.gz -C /usr/share/rpminspec
 
 # Copy the build scripts to the container
 COPY run-rpminspect.sh /tmp/
+COPY convert_result_json_yaml.py /tmp/
 
 # Run the build script
 # assumes that target ENVR is available as $TARGET_ENVR
