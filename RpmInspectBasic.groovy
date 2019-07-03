@@ -88,7 +88,27 @@ node(podName) {
     stage(currentStage) {
         def json_message = readJSON text: env.CI_MESSAGE
         env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
+
+        // Set our message topic, properties, and content
+        //messageFields = packagepipelineUtils.setMessageFields("package.test.functional.queued", env.TARGET_ENVR)
+
+        // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.queued on fedmsg
+        //pipelineUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+
+        // Set stage specific vars
+        //packagepipelineUtils.setStageEnvVars(currentStage)
+
+        // Set our message topic, properties, and content
+        //messageFields = packagepipelineUtils.setMessageFields("package.test.functional.running", env.TARGET_ENVR)
+
         executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
+
+        // Set our message topic, properties, and content
+        //messageFields = packagepipelineUtils.setMessageFields("package.test.functional.complete", env.TARGET_ENVR)
+
+        // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.complete on fedmsg
+        //pipelineUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+
     }
     stage("archive output"){
 
