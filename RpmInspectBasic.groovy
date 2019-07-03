@@ -93,6 +93,7 @@ node(podName) {
     stage("archive output"){
 
         archiveArtifacts artifacts: 'run-rpminspect/logs/rpminspect.json'
+        archiveArtifacts artifacts: 'run-rpminspect/logs/results.yaml'
 
     }
 }
