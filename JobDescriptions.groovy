@@ -11,6 +11,7 @@ pipelineJob('fedora-build-check'){
     // by datagrepper
     fedmsgRetryCount = 120
 
+/* don't want to deal with ci triggers right now
     triggers{
         ciBuildTrigger{
             noSquash(true)
@@ -41,7 +42,7 @@ pipelineJob('fedora-build-check'){
             }
         }
     }
-
+*/
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
         // This is for apps.ci.centos.org
