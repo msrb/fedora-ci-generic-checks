@@ -1,5 +1,7 @@
 #!groovy
 
+import groovy.json.JsonOutput
+
 /**
  * Function to execute script in container
  * Container must have been defined in a podTemplate
