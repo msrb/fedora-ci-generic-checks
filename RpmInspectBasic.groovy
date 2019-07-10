@@ -199,7 +199,7 @@ node(podName) {
         messageFields = setMessageFields("package.test.functional.complete", env.TARGET_ENVR)
 
         // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.complete on fedmsg
-        pipelineUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+        sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
     }
     stage("archive output"){
