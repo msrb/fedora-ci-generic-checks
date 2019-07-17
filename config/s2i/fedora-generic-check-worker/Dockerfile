@@ -33,6 +33,7 @@ RUN dnf -y install ansible \
         sudo \
         wget \
         rpminspect \
+        rpminspect-data-fedora \
         rpmdeplint \
         rpmlint \
         && dnf clean all
