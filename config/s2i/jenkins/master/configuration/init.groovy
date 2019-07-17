@@ -12,6 +12,8 @@ import hudson.slaves.EnvironmentVariablesNodeProperty.Entry
 import hudson.plugins.sshslaves.*
 import hudson.plugins.sshslaves.verifiers.*
 import hudson.plugins.openid.*
+import com.redhat.jenkins.plugins.ci.*
+import com.redhat.jenkins.plugins.ci.messaging.*
 
 def logger = Logger.getLogger("")
 logger.info("Disabling CLI over remoting")
