@@ -67,7 +67,7 @@ def setMessageFields(String messageType, String artifact) {
     def messageContent = [
             branch           : env.fed_branch,
             build_id         : env.BUILD_ID,
-            build_url        : env.JENKINS_URL + 'blue/organizations/jenkins/' + env.JOB_NAME + '/detail/' + env.JOB_NAME + '/' + env.BUILD_NUMBER + '/pipeline/',
+            build_url        : env.JENKINS_URL + '/'+ env.JOB_NAME + '/' + env.BUILD_NUMBER,
             namespace        : env.fed_namespace,
             nvr              : env.nvr,
             original_spec_nvr: env.original_spec_nvr,
