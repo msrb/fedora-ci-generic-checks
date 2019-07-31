@@ -54,7 +54,7 @@ def executeInContainer(String stageName,
  * @return
  */
 def setMessageFields(String messageType, String artifact) {
-    topic = "${MAIN_TOPIC}.ci.pipeline.allpackages-${artifact}.${messageType}"
+    topic = "${MAIN_TOPIC}.ci.${artifact}.rpminspect.${messageType}"
     print("Topic is " + topic)
 
     // Create a HashMap of default message content keys and values
@@ -177,7 +177,7 @@ node(podName) {
     currentStage = "run-rpminspect"
     stage(currentStage) {
         env.MSG_PROVIDER = "fedora-fedmsg-stage"
-        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.fedoraproject.stage'
+        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
         def json_message = readJSON text: env.CI_MESSAGE
         env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
 
