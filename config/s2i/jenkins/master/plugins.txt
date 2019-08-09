@@ -32,4 +32,4 @@ matrix-auth:2.4.2
 openid:2.3
 
 # trying to force jms-messaging to show up post-build
-jms-messaging:1.1.8
+jms-messaging:1.1.9
