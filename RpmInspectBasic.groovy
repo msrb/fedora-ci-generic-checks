@@ -192,6 +192,7 @@ node(podName) {
 
         // Set our message topic, properties, and content
         messageFields = setMessageFields("package.test.functional.running", env.TARGET_ENVR)
+        sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
         executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
 
