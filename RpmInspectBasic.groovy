@@ -54,7 +54,7 @@ def executeInContainer(String stageName,
  * @return
  */
 def setMessageFields(String messageType, String artifact) {
-    topic = "${MAIN_TOPIC}.ci.${artifact}.rpminspect.${messageType}"
+    topic = "${MAIN_TOPIC}.ci.${messageType}"
     print("Topic is " + topic)
 
     // Create a HashMap of default message content keys and values
