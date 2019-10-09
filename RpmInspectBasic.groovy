@@ -177,12 +177,12 @@ node(podName) {
     currentStage = "run-rpminspect"
     stage(currentStage) {
         env.MSG_PROVIDER = "fedora-fedmsg"
-        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
+        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg.ci'
         def json_message = readJSON text: env.CI_MESSAGE
         env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("package.test.functional.queued", env.TARGET_ENVR)
+        messageFields = setMessageFields("koji-build.test.queued", env.TARGET_ENVR)
 
         // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.queued on fedmsg
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
@@ -191,13 +191,13 @@ node(podName) {
         //packagepipelineUtils.setStageEnvVars(currentStage)
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("package.test.functional.running", env.TARGET_ENVR)
+        messageFields = setMessageFields("koji-build.test.running", env.TARGET_ENVR)
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
         executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("package.test.functional.complete", env.TARGET_ENVR)
+        messageFields = setMessageFields("koji-build.test.complete", env.TARGET_ENVR)
 
         // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.complete on fedmsg
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
