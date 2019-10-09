@@ -16,8 +16,8 @@ import com.redhat.jenkins.plugins.ci.*
 import com.redhat.jenkins.plugins.ci.messaging.*
 
 def logger = Logger.getLogger("")
-logger.info("Disabling CLI over remoting")
-jenkins.CLI.get().setEnabled(false);
+//logger.info("Disabling CLI over remoting")
+//jenkins.CLI.get().setEnabled(false);
 logger.info("Enable Slave -> Master Access Control")
 Jenkins.instance.injector.getInstance(AdminWhitelistRule.class).setMasterKillSwitch(false)
 Jenkins.instance.save()
