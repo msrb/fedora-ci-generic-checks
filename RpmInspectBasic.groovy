@@ -194,7 +194,9 @@ node(podName) {
         messageFields = setMessageFields("koji-build.test.running", env.TARGET_ENVR)
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
-        executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
+        catchError {
+            executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
+        }
 
         // Set our message topic, properties, and content
         messageFields = setMessageFields("koji-build.test.complete", env.TARGET_ENVR)
@@ -203,22 +205,14 @@ node(podName) {
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
     }
-/*
+
     stage("archive output"){
 
         archiveArtifacts artifacts: 'run-rpminspect/logs/rpminspect.json'
         archiveArtifacts artifacts: 'run-rpminspect/logs/results.yaml'
 
     }
-*/
-}
-post {
-    always {
-        node(podName) {
 
-        archiveArtifacts artifacts: 'run-rpminspect/logs/rpminspect.json'
-        archiveArtifacts artifacts: 'run-rpminspect/logs/results.yaml'
-        }
-    }
 }
+
 }
