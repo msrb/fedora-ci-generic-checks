@@ -177,7 +177,7 @@ node(podName) {
     currentStage = "run-rpminspect"
     stage(currentStage) {
         env.MSG_PROVIDER = "fedora-fedmsg"
-        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg.ci'
+        env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
         def json_message = readJSON text: env.CI_MESSAGE
         env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
 
