@@ -27,7 +27,7 @@ echo "running against $TARGET_ENVR"
 #rpminspect -c /tmp/rpminspect-fedora.conf -o $TEST_ARTIFACTS/rpminspect.json -F json $TARGET_ENVR
 
 # the config issues should be fixed with the new rpminspect-data-fedora package
-rpminspect -v -F json $TARGET_ENVR | tee $TEST_ARTIFACTS/rpminspect.json
+rpminspect -v -F json $TARGET_ENVR 2>&1 | tee $TEST_ARTIFACTS/rpminspect.json
 
 EXIT_CODE=`echo $?`
 
