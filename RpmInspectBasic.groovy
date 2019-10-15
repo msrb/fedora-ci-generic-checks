@@ -2,8 +2,7 @@
 
 import groovy.json.JsonOutput
 
-@Library('BuildCheckUtils')
-import org.fedoraproject.ci.BuildCheckUtils
+import org.fedoraproject.ci.BuildCheckUtils.buildCheckUtils
 
 
 /**
