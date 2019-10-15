@@ -2,7 +2,7 @@
 
 import groovy.json.JsonOutput
 
-import org.fedoraproject.ci.BuildCheckUtils
+import org.fedoraproject.ci.BuildCheckUtils.fileExists
 
 
 /**
@@ -204,7 +204,7 @@ node(podName) {
         try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
         } catch (e) {
-            if (BuildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
+            if (fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
 
             } else {
