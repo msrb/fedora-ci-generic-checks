@@ -2,6 +2,10 @@
 
 import groovy.json.JsonOutput
 
+@Library('BuildCheckUtils')
+import org.fedoraproject.ci.BuildCheckUtils
+
+
 /**
  * Function to execute script in container
  * Container must have been defined in a podTemplate
@@ -195,7 +199,18 @@ node(podName) {
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
         catchError {
+        }
+
+        // Run functional tests
+        try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
+        } catch (e) {
+            if (buildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
+                currentBuild.result = 'UNSTABLE'
+
+            } else {
+                throw e
+            }
         }
 
         // Set our message topic, properties, and content
