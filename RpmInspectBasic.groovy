@@ -2,7 +2,6 @@
 
 import groovy.json.JsonOutput
 
-@Library('buildUtils') import org.fedoraproject.ci.BuildCheckUtils
 
 //library identifier: 'buildcheckutils@develop', retriever: modernSCM(
 //  [$class: 'GitSCMSource',
@@ -174,6 +173,8 @@ def sendMessage(String msgTopic, String msgProps, String msgContent) {
             volumes: [emptyDirVolume(memory: false, mountPath: '/sys/class/net')])
     {
 node(podName) {
+
+    @Library('buildUtils') import org.fedoraproject.ci.BuildCheckUtils
 
     currentStage = "basic-information"
     stage(currentStage) {
