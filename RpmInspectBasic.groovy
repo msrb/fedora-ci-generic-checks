@@ -2,8 +2,11 @@
 
 import groovy.json.JsonOutput
 
-import org.fedoraproject.ci.BuildCheckUtils.fileExists
+@Library('buildUtils') import org.fedoraproject.ci.BuildCheckUtils
 
+//library identifier: 'buildcheckutils@develop', retriever: modernSCM(
+//  [$class: 'GitSCMSource',
+//   remote: 'https://pagure.io/fedora-ci-generic-checks.git')
 
 /**
  * Function to execute script in container
@@ -204,7 +207,7 @@ node(podName) {
         try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
         } catch (e) {
-            if (fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
+            if (buildUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
 
             } else {
