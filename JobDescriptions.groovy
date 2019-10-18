@@ -11,36 +11,36 @@ pipelineJob('rpminspect-simple'){
     // by datagrepper
     fedmsgRetryCount = 120
 
-    triggers{
-        ciBuildTrigger{
-            noSquash(true)
-            providers {
-                providerDataEnvelope {
-                    providerData {
-                fedmsgSubscriber{
-                    name("fedora-fedmsg")
-                    overrides {
-                        topic("org.fedoraproject.prod.buildsys.build.state.change")
-                    }
-                    checks {
-                        msgCheck {
-                            field("new")
-                            expectedValue("1|CLOSED")
-                        }
-                        msgCheck {
-                            field("release")
-                            expectedValue(".*fc.*")
-                        }
-                        msgCheck {
-                            field("instance")
-                            expectedValue("primary")
-                        }
-                    }
-                }
-                    }}
-            }
-        }
-    }
+//    triggers{
+//        ciBuildTrigger{
+//            noSquash(true)
+//            providers {
+//                providerDataEnvelope {
+//                    providerData {
+//                fedmsgSubscriber{
+//                    name("fedora-fedmsg")
+//                    overrides {
+//                        topic("org.fedoraproject.prod.buildsys.build.state.change")
+//                    }
+//                    checks {
+//                        msgCheck {
+//                            field("new")
+//                            expectedValue("1|CLOSED")
+//                        }
+//                        msgCheck {
+//                            field("release")
+//                            expectedValue(".*fc.*")
+//                        }
+//                        msgCheck {
+//                            field("instance")
+//                            expectedValue("primary")
+//                        }
+//                    }
+//                }
+//                    }}
+//            }
+//        }
+//    }
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
         // This is for apps.ci.centos.org
