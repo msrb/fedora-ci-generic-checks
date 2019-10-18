@@ -1,4 +1,4 @@
-pipelineJob('rpminspect-simple', additionalClasspath: 'src/main/groovy'){
+pipelineJob('rpminspect-simple'){
     description 'Job to run checks on Fedora builds'
 
     // default so we don't need to wait around for builds to happen
