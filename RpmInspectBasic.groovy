@@ -177,7 +177,6 @@ node(podName) {
 
     currentStage = "run-rpminspect"
     stage(currentStage) {
-        def buildUtils = library('my-shared-library').com.mycorp.pipeline
 
         env.MSG_PROVIDER = "fedora-fedmsg"
         env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
