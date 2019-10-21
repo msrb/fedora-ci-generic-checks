@@ -2,9 +2,7 @@
 
 import groovy.json.JsonOutput
 
-@Library('buildUtils') import org.fedoraproject.ci.BuildCheckUtils
-
-def buildUtils = new BuildCheckUtils(this)
+import static org.fedoraproject.ci.BuildCheckUtils.fileExists
 
 //library identifier: 'buildcheckutils@develop', retriever: modernSCM(
 //  [$class: 'GitSCMSource',
@@ -184,6 +182,8 @@ node(podName) {
 
     currentStage = "run-rpminspect"
     stage(currentStage) {
+        def buildUtils = library('my-shared-library').com.mycorp.pipeline
+
         env.MSG_PROVIDER = "fedora-fedmsg"
         env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
         def json_message = readJSON text: env.CI_MESSAGE
@@ -209,7 +209,7 @@ node(podName) {
         try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
         } catch (e) {
-            if (buildUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
+            if (fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
 
             } else {
