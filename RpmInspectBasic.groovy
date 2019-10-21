@@ -203,7 +203,7 @@ node(podName) {
         try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
         } catch (e) {
-            if (buildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
+            if (BuildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
 
             } else {
