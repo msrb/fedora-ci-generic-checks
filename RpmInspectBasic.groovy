@@ -2,6 +2,14 @@
 
 import groovy.json.JsonOutput
 
+library identifier: "build-check@develop",
+        retriever: modernSCM([$class: 'GitSCMSource',
+                              remote: "https://pagure.io/fedora-ci-generic-checks.git",
+                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
+                                       [$class: 'RefSpecsSCMSourceTrait',
+                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
+                                                    [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
+
 
 /**
  * Function to execute script in container
