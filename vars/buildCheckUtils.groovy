@@ -6,7 +6,7 @@
 class buildCheckUtils implements Serializable {
 
     def setupEnvVars(String main_topic) {
-        env.MAIN_TOPIC = main_topic
+        this.MAIN_TOPIC = main_topic
     }
 
     /**
@@ -79,7 +79,8 @@ class buildCheckUtils implements Serializable {
     * @return
     */
     def setMessageFields(String messageType, String artifact) {
-        topic = "${MAIN_TOPIC}.ci.${messageType}"
+        //topic = "${MAIN_TOPIC}.ci.${messageType}"
+        topic = "${this.MAIN_TOPIC}.ci.${messageType}"
         print("Topic is " + topic)
 
         // Create a HashMap of default message content keys and values
