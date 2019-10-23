@@ -215,8 +215,7 @@ node(podName) {
             if (buildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
             } else {
-                currentBuild.result = 'UNSTABLE'
-                //throw e
+                throw e
             }
         }
 
