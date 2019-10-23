@@ -1,12 +1,9 @@
-import org.fedoraproject.ci.BuildCheckUtils
-
 /**
  * A class of methods used in the Jenkinsfile pipeline.
  * These methods are wrappers around methods in the ci-pipeline library.
  */
-class buildCheckUtils implements Serializable {
 
-    def buildCheckUtils = new BuildCheckUtils()
+class buildCheckUtils implements Serializable {
 
     /**
     * General function to check existence of a file
@@ -14,6 +11,15 @@ class buildCheckUtils implements Serializable {
     * @return boolean
     */
     def fileExists(String fileLocation) {
-        buildCheckUtils.fileExists(fileLocation)
+        def status = false
+        try {
+            def contents = readFile(fileLocation)
+            status = true
+        } catch(e) {
+            println "file not found: ${fileLocation}"
+        }
+
+        return status
     }
+
 }
