@@ -82,6 +82,7 @@ class buildCheckUtils implements Serializable {
     */
     def setMessageFields(String messageType, String artifact) {
         //topic = "${MAIN_TOPIC}.ci.${messageType}"
+        def topic
         topic = "${this.MAIN_TOPIC}.ci.${messageType}"
         print("Topic is " + topic)
 
