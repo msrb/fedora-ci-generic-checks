@@ -191,7 +191,9 @@ node(podName) {
         env.MSG_PROVIDER = "fedora-fedmsg"
         env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
         def json_message = readJSON text: env.CI_MESSAGE
-        env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
+        //env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
+        // short circuiting failure for now for testing of error handling
+        env.TARGET_ENVR = "blah-foo.fc99"
 
         // Set our message topic, properties, and content
         messageFields = setMessageFields("koji-build.test.queued", env.TARGET_ENVR)
@@ -213,7 +215,6 @@ node(podName) {
             if (buildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
             } else {
-
                 currentBuild.result = 'UNSTABLE'
                 //throw e
             }
