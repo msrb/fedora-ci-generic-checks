@@ -206,9 +206,6 @@ node(podName) {
         messageFields = setMessageFields("koji-build.test.running", env.TARGET_ENVR)
         sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
-        catchError {
-        }
-
         // Run functional tests
         try {
             executeInContainer(currentStage, "package-checks", "/tmp/run-rpminspect.sh")
