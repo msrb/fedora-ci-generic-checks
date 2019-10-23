@@ -5,6 +5,8 @@
 
 class buildCheckUtils implements Serializable {
 
+    MAIN_TOPIC = ''
+
     def setupEnvVars(String main_topic) {
         this.MAIN_TOPIC = main_topic
     }
