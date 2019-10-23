@@ -66,17 +66,17 @@ node(podName) {
         env.TARGET_ENVR = "blah-foo.fc99"
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("koji-build.test.queued", env.TARGET_ENVR)
+        messageFields = buildCheckUtils.setMessageFields("koji-build.test.queued", env.TARGET_ENVR)
 
         // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.queued on fedmsg
-        sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+        buildCheckUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
         // Set stage specific vars
         //packagepipelineUtils.setStageEnvVars(currentStage)
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("koji-build.test.running", env.TARGET_ENVR)
-        sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+        messageFields = buildCheckUtils.setMessageFields("koji-build.test.running", env.TARGET_ENVR)
+        buildCheckUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
         // Run functional tests
         try {
@@ -90,10 +90,10 @@ node(podName) {
         }
 
         // Set our message topic, properties, and content
-        messageFields = setMessageFields("koji-build.test.complete", env.TARGET_ENVR)
+        messageFields = buildCheckUtils.setMessageFields("koji-build.test.complete", env.TARGET_ENVR)
 
         // Send message org.centos.prod.ci.pipeline.allpackages.package.test.functional.complete on fedmsg
-        sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
+        buildCheckUtils.sendMessage(messageFields['topic'], messageFields['properties'], messageFields['content'])
 
     }
 
