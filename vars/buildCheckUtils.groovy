@@ -5,6 +5,10 @@
 
 class buildCheckUtils implements Serializable {
 
+    def setupEnvVars(String main_topic) {
+        env.MAIN_TOPIC = main_topic
+    }
+
     /**
     * General function to check existence of a file
     * @param fileLocation

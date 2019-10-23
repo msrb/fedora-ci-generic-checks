@@ -60,6 +60,10 @@ node(podName) {
 
         env.MSG_PROVIDER = "fedora-fedmsg"
         env.MAIN_TOPIC = env.MAIN_TOPIC ?: 'org.centos.stg'
+
+        // attempting to set MAIN_TOPIC in library
+        buildCheckUtils.setupEnvVars(env.MAIN_TOPIC)
+
         def json_message = readJSON text: env.CI_MESSAGE
         //env.TARGET_ENVR = "${json_message['name']}-${json_message['version']}-${json_message['release']}"
         // short circuiting failure for now for testing of error handling
