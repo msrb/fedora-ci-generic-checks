@@ -6,7 +6,7 @@ import org.fedoraproject.ci.BuildCheckUtils
  */
 class buildCheckUtils implements Serializable {
 
-    def buildCheckUtils = new BuildCheckUtils
+    def buildCheckUtils = new BuildCheckUtils()
 
     /**
     * General function to check existence of a file
