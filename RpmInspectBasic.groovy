@@ -11,7 +11,7 @@ import groovy.json.JsonOutput
 //                                                    [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
 
 // load all parts of buildCheckUtils, global library defined in jenkins config
-@Library('buildCheckUtils') _
+//@Library('buildCheckUtils') _
 
 /**
  * Function to execute script in container
@@ -215,9 +215,10 @@ node(podName) {
         } catch (e) {
             if (buildCheckUtils.fileExists("${WORKSPACE}/${currentStage}/logs/test.log")) {
                 currentBuild.result = 'UNSTABLE'
-
             } else {
-                throw e
+
+                currentBuild.result = 'UNSTABLE'
+                //throw e
             }
         }
 
