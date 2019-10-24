@@ -47,13 +47,6 @@ pipelineJob('rpminspect-simple'){
 //    }
 
 
-    steps{
-        dsl{
-            external 'RpmInspectBasic.groovy'
-            additionalClasspath 'src/main/groovy'
-        }
-    }
-
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
         // This is for apps.ci.centos.org
@@ -65,10 +58,11 @@ pipelineJob('rpminspect-simple'){
     }
 
 
-//    definition {
-//        cps {
-//            //script("print env.CI_MESSAGE")
-//            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
-//        }
-//    }
+    definition {
+        cps {
+            //script("print env.CI_MESSAGE")
+            additionalClasspath('src/main/groovy')
+            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
+        }
+    }
 }
