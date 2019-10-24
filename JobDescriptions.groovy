@@ -1,4 +1,4 @@
-job('rpminspect-simple'){
+pipelineJob('rpminspect-simple'){
 
     description 'Job to run checks on Fedora builds'
 
