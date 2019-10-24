@@ -48,6 +48,7 @@ pipelineJob('rpminspect-simple'){
 
     steps{
         dsl{
+            external 'RpmInspectBasic.groovy'
             additionalClasspath 'src/main/groovy'
         }
     }
@@ -63,10 +64,10 @@ pipelineJob('rpminspect-simple'){
     }
 
 
-    definition {
-        cps {
-            //script("print env.CI_MESSAGE")
-            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
-        }
-    }
+//    definition {
+//        cps {
+//            //script("print env.CI_MESSAGE")
+//            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
+//        }
+//    }
 }
