@@ -45,6 +45,13 @@ pipelineJob('rpminspect-simple'){
 //            }
 //        }
 //    }
+
+    steps{
+        dsl{
+            additionalClasspath 'src/main/groovy'
+        }
+    }
+
     parameters{
         stringParam('CI_MESSAGE', CANNED_CI_MESSAGE, 'fedora-fedmsg')
         // This is for apps.ci.centos.org
