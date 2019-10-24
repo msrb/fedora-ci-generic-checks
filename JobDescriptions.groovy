@@ -46,15 +46,6 @@ pipelineJob('rpminspect-simple'){
 //        }
 //    }
 
-    scm {
-        git {
-            branch('develop')
-            remote {
-                name('upstream')
-                url('https://pagure.io/fedora-ci-generic-checks.git')
-            }
-        }
-    }
 
     steps{
         dsl{
