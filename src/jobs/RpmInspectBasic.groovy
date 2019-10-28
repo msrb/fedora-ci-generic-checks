@@ -2,6 +2,9 @@
 
 import groovy.json.JsonOutput
 
+
+def job = job('RPMinspect Basic') {
+
 //library identifier: "build-check@develop",
 //        retriever: modernSCM([$class: 'GitSCMSource',
 //                              remote: "https://pagure.io/fedora-ci-generic-checks.git",
@@ -110,4 +113,5 @@ node(podName) {
 
 }
 
+}
 }
