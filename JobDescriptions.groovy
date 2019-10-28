@@ -47,7 +47,7 @@ job('rpminspect-simple'){
 //    }
   scm {
     git {
-      branch('master')
+      branch('develop')
       remote {
         name('upstream')
         // replace this with whever you put this repo
