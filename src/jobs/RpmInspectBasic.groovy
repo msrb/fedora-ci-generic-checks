@@ -3,7 +3,7 @@
 import groovy.json.JsonOutput
 
 
-def job = job('RPMinspect Basic') {
+def job = pipelineJob('RPMinspect Basic') {
 
 //library identifier: "build-check@develop",
 //        retriever: modernSCM([$class: 'GitSCMSource',
