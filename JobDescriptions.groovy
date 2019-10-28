@@ -1,4 +1,4 @@
-pipelineJob('rpminspect-simple'){
+job('rpminspect-simple'){
 
     description 'Job to run checks on Fedora builds'
 
@@ -57,12 +57,18 @@ pipelineJob('rpminspect-simple'){
         stringParam('OPENSHIFT_SERVICE_ACCOUNT', 'fedora-check-jenkins', 'OpenShift Service Account')
     }
 
-
-    definition {
-        cps {
-            //script("print env.CI_MESSAGE")
-            additionalClasspath('src/main/groovy')
-            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
+    steps {
+        dsl {
+            // any job ending in Job.groovy will be deployed
+            external 'RpmInspectBasic.groovy'
+            additionalClasspath 'src/main/groovy'
         }
     }
+//    definition {
+//        cps {
+//            //script("print env.CI_MESSAGE")
+//            additionalClasspath('src/main/groovy')
+//            script(readFileFromWorkspace("RpmInspectBasic.groovy"))
+//        }
+//    }
 }
