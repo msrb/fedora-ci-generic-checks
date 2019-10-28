@@ -45,6 +45,16 @@ job('rpminspect-simple'){
 //            }
 //        }
 //    }
+  scm {
+    git {
+      branch('master')
+      remote {
+        name('upstream')
+        // replace this with whever you put this repo
+        url('https://pagure.io/fedora-ci-generic-checks.git')
+      }
+    }
+  }
 
 
     parameters{
