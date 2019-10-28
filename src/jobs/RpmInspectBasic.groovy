@@ -14,7 +14,7 @@ def job = job('RPMinspect Basic') {
 //                                                    [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
 
 // load all parts of buildCheckUtils, global library defined in jenkins config
-@Library('buildCheckUtils') _
+// @Library('buildCheckUtils') _
 
 
 
