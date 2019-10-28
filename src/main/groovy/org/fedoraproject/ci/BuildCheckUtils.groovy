@@ -152,4 +152,3 @@ def sendMessage(String msgTopic, String msgProps, String msgContent) {
         }
     }
 }
-}
