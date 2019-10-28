@@ -60,7 +60,7 @@ job('rpminspect-simple'){
     steps {
         dsl {
             // any job ending in Job.groovy will be deployed
-            external 'RpmInspectBasic.groovy'
+            external 'src/jobs/RpmInspectBasic.groovy'
             additionalClasspath 'src/main/groovy'
         }
     }
