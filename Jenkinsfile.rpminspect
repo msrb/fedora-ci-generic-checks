@@ -145,7 +145,8 @@ timestamps {
                             resourceLimitCpu: runnerCpuLimit,
                             resourceRequestMemory: '4Gi',
                             resourceLimitMemory: '6Gi',
-                            privileged: true,
+                            privileged: false,
+                            //privileged: true,
                             workingDir: '/workDir')
             ],
             volumes: [emptyDirVolume(memory: false, mountPath: '/sys/class/net')])
