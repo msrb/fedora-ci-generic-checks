@@ -122,13 +122,13 @@ timestamps {
 
             containers: [
                     // This adds the custom slave container to the pod. Must be first with name 'jnlp'
-//                    containerTemplate(name: 'jnlp',
-//                            alwaysPullImage: true,
-//                            image: DOCKER_REPO_URL + '/' + OPENSHIFT_NAMESPACE + '/jenkins-fedoraci-slave:' + SLAVE_TAG,
-//                            ttyEnabled: false,
-//                            args: '${computer.jnlpmac} ${computer.name}',
-//                            command: '',
-//                            workingDir: '/workDir'),
+                    containerTemplate(name: 'jnlp',
+                            alwaysPullImage: true,
+                            image: DOCKER_REPO_URL + '/' + OPENSHIFT_NAMESPACE + '/jenkins-fedoraci-slave:' + SLAVE_TAG,
+                            ttyEnabled: false,
+                            args: '${computer.jnlpmac} ${computer.name}',
+                            command: '',
+                            workingDir: '/workDir'),
                     // This adds the package-checks container to the pod.
                     containerTemplate(name: 'package-checks',
                             alwaysPullImage: true,
