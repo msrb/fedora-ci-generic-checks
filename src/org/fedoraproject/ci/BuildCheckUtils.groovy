@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-package org.centos.pipeline
+package org.fedoraproject.ci
 
 import org.centos.*
 import groovy.json.JsonOutput
