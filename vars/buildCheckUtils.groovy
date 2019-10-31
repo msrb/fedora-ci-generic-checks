@@ -11,7 +11,7 @@ import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
  */
 class packagepipelineUtils implements Serializable {
 
-    def packagePipelineUtils = new PackagePipelineUtils()
+    def packagePipelineUtils = new BuildCheckUtils()
     def contraUtils = new org.centos.contra.pipeline.Utils()
     def centosUtils = new org.centos.Utils()
 
