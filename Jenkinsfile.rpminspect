@@ -42,9 +42,9 @@ timestamps {
     }
 
     // Check out PR's version of library
-    library identifier: "upstream-fedora-pipeline@${env.ghprbActualCommit}",
+    library identifier: "upstream-fedora-pipeline@3c0dc2e6e5d229f27a27baf902ed956e1b9ff1cd",
             retriever: modernSCM([$class: 'GitSCMSource',
-                                  remote: "https://github.com/${env.ghprbGhRepository}",
+                                  remote: "https://pagure.io/fedora-ci-generic-checks.git",
                                   traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
                                            [$class: 'RefSpecsSCMSourceTrait',
                                             templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
